@@ -11,22 +11,19 @@ from django.conf import settings
 
 class AlertList(generics.ListAPIView):
     serializer_class = AlertSerializer
-    permission_classes = [permissions.IsAuthenticated]
     queryset = Alert.objects.all()
 
 
 class AlertDetail(generics.RetrieveAPIView):
-    permission_classes = [permissions.IsAuthenticated]
     serializer_class = AlertSerializer
 
     def get_object(self, queryset=None, **kwargs):
         item = self.kwargs.get('pk')
-        return get_object_or_404(Alert, slug=item)
+        return get_object_or_404(Alert, id=item)
 
 
 class CreateAlert(APIView):
 
-    permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
 
     def post(self, request):
@@ -41,19 +38,16 @@ class CreateAlert(APIView):
 
 class AdminAlertDetail(generics.RetrieveAPIView):
 
-    permission_classes = [permissions.IsAuthenticated]
     queryset = Alert.objects.all()
     serializer_class = AlertSerializer
 
     
 class EditAlert(generics.UpdateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
     serializer_class = AlertSerializer
     queryset = Alert.objects.all()
 
 
 class DeleteAlert(generics.RetrieveDestroyAPIView):
-    permissions_classes = [permissions.IsAuthenticated]
     serializer_class = AlertSerializer
     queryset = Alert.objects.all()
 
