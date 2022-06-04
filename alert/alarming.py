@@ -24,10 +24,10 @@ session = Session()
 session.headers.update(headers)
 
 
-#sched = BlockingScheduler()
+sched = BlockingScheduler()
 
 
-#@sched.scheduled_job('interval', minutes=1)
+@sched.scheduled_job('interval', minutes=1)
 def get_price():
 
 
@@ -51,4 +51,5 @@ def get_price():
                 recepient = f'{mail}'
                 send_mail(subject, message, EMAIL_HOST_USER, [recepient], fail_silently=False)
 
+sched.start()
 get_price()
