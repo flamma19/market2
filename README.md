@@ -1,5 +1,8 @@
 # market2
 
+this web app get user info ( email ) and user custom alarms for crypto and send alarm to user email when the price is inside requested renge.
+this app is only v 1.0. it means that it only depends on high, low price and symbol of crypto. more features will be add in updates.
+
 for adding new alarm run py manage.py runserver and for sending them run alert/alarming.py
 views are not successfully made so create user and alart from django admin panel, create a superuser first and then go on.
 
